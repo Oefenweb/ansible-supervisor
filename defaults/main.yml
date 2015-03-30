@@ -17,3 +17,6 @@ supervisor_supervisord_childlogdir: /var/log/supervisor
 supervisor_supervisorctl_serverurl: "unix://{{ supervisor_unix_http_server_file }}"
 
 supervisor_include: '/etc/supervisor/conf.d/*.conf'
+
+supervisor_programs: {}
+supervisor_groups: {}
