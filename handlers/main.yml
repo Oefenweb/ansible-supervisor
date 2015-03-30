@@ -1,6 +1,6 @@
 # handlers file for supervisor
 ---
-- name: reload supervisor
+- name: restart supervisor
   service:
     name: supervisor
-    state: reloaded
+    state: restarted
