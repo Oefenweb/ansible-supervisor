@@ -29,8 +29,10 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 
 * `supervisor_include` [default: `'/etc/supervisor/conf.d/*.conf'`]: A (single) absolute file glob of files to include
 
-* `supervisor_programs` [default: `{}`, see `templates/etc/supervisor/conf.d/program.conf.j2`]: Program definitions
-* `supervisor_groups` [default: `{}`, see `templates/etc/supervisor/conf.d/group.conf.j2`]: Group definitions
+* `supervisor_programs_present` [default: `{}`, see `templates/etc/supervisor/conf.d/program.conf.j2`]: Program definitions
+* `supervisor_programs_absent` [default: `{}`]: Program definitions (to be removed)
+* `supervisor_groups_present` [default: `{}`, see `templates/etc/supervisor/conf.d/group.conf.j2`]: Group definitions
+* `supervisor_groups_absent` [default: `{}`]: Group definitions (to be removed)
 
 ## Dependencies
 
@@ -45,16 +47,10 @@ None
   - supervisor
 ```
 
-##### Two programs, one group
-```yaml
-supervisor_groups:
-  foo-and-bar:
-    programs:
-      - foo
-      - bar
-    priority: 10
+##### Adding two programs in one group
 
-supervisor_programs:
+```yaml
+supervisor_programs_present:
   foo:
     command: 'sleep 10'
     directory: /tmp
@@ -77,6 +73,20 @@ supervisor_programs:
     stderr_logfile: /tmp/bar.err
     stderr_logfile_maxbytes: 0
     user: vboxadd
+
+supervisor_groups_present:
+  foo-and-bar:
+    programs:
+      - foo
+      - bar
+    priority: 10
+```
+
+##### Removing a group
+
+```yaml
+supervisor_groups_absent:
+  foo-and-bar: {}
 ```
 
 #### License
