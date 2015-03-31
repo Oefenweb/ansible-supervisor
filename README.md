@@ -29,6 +29,9 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 
 * `supervisor_include` [default: `'/etc/supervisor/conf.d/*.conf'`]: A (single) absolute file glob of files to include
 
+* `supervisor_programs` [default: `{}`, see `templates/etc/supervisor/conf.d/program.conf.j2`]: Program definitions
+* `supervisor_groups` [default: `{}`, see `templates/etc/supervisor/conf.d/group.conf.j2`]: Group definitions
+
 ## Dependencies
 
 None
@@ -40,6 +43,40 @@ None
 - hosts: all
   roles:
   - supervisor
+```
+
+##### Two programs, one group
+```yaml
+supervisor_groups:
+  foo-and-bar:
+    programs:
+      - foo
+      - bar
+    priority: 10
+
+supervisor_programs:
+  foo:
+    command: 'sleep 10'
+    directory: /tmp
+    autostart: true
+    autorestart: true
+    startretries: 3
+    stdout_logfile: /tmp/foo.out
+    stdout_logfile_maxbytes: 0
+    stderr_logfile: /tmp/foo.err
+    stderr_logfile_maxbytes: 0
+    user: vagrant
+  bar:
+    command: 'sleep 10'
+    directory: /tmp
+    autostart: true
+    autorestart: true
+    startretries: 3
+    stdout_logfile: /tmp/bar.out
+    stdout_logfile_maxbytes: 0
+    stderr_logfile: /tmp/bar.err
+    stderr_logfile_maxbytes: 0
+    user: vboxadd
 ```
 
 #### License

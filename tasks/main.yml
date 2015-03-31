@@ -59,6 +59,30 @@
   notify: restart supervisor
   tags: [configuration, supervisor, supervisor-configuration]
 
+- name: update program configuration files
+  template:
+    src: etc/supervisor/conf.d/program.conf.j2
+    dest: "/etc/supervisor/conf.d/{{ item.key }}.conf"
+    owner: root
+    group: root
+    mode: 0640
+  with_dict: supervisor_programs
+  when: supervisor_programs
+  notify: restart supervisor
+  tags: [configuration, supervisor, supervisor-configuration-programs]
+
+- name: update group configuration files
+  template:
+    src: etc/supervisor/conf.d/group.conf.j2
+    dest: "/etc/supervisor/conf.d/{{ item.key }}.conf"
+    owner: root
+    group: root
+    mode: 0640
+  with_dict: supervisor_groups
+  when: supervisor_groups
+  notify: restart supervisor
+  tags: [configuration, supervisor, supervisor-configuration-groups]
+
 - name: start and enable service
   service:
     name: supervisor
