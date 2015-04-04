@@ -9,10 +9,10 @@ directory={{ item.value.directory }}
 environment={{ item.value.environment }}
 {% endif %}
 {% if item.value.autostart is defined %}
-autostart={{ 'true' if item.value.autostart else 'false' }}
+autostart={{ 'true' if item.value.autostart | bool else 'false' }}
 {% endif %}
 {% if item.value.autorestart is defined %}
-autorestart={{ 'true' if item.value.autorestart else 'false'}}
+autorestart={{ 'true' if item.value.autorestart | bool else 'false'}}
 {% endif %}
 {% if item.value.startretries is defined %}
 startretries={{ item.value.startretries }}
