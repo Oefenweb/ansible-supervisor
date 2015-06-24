@@ -2,7 +2,7 @@
 ---
 - name: create directories
   file:
-    path: "{{ item | dirname }}"
+    path: "{{ item | dirname }}/"
     state: directory
     owner: root
     group: root
