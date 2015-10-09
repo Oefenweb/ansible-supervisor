@@ -10,5 +10,5 @@
   service:
     name: supervisor
     state: started
-    enabled: yes
+    enabled: true
   tags: [configuration, supervisor, supervisor-start-enable-service]

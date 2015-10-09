@@ -8,7 +8,6 @@
     group: root
     mode: 0640
   with_dict: supervisor_groups_present
-  when: supervisor_groups_present
   notify: restart supervisor
   tags: [configuration, supervisor, supervisor-configuration-groups]
 
@@ -17,6 +16,5 @@
     path: "/etc/supervisor/conf.d/{{ item.key }}.conf"
     state: absent
   with_dict: supervisor_groups_absent
-  when: supervisor_groups_absent
   notify: restart supervisor
   tags: [configuration, supervisor, supervisor-configuration-groups]
