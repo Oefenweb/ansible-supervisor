@@ -1,6 +1,5 @@
 # tasks file for supervisor
 ---
-- include: pip.yml
 - include: install.yml
 - include: configure.yml
 - include: programs.yml

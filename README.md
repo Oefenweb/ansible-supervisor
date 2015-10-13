@@ -6,12 +6,11 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 
 #### Requirements
 
-* `python-dev` (will be installed)
-* `python-pip` (will be installed)
+* `pip` (will not installed)
 
 #### Variables
 
-* `supervisor_version` [default: `3.1.3`]: Supervisor version to install (e.g. `latest`, `3.1.3`)
+* `supervisor_version` [default: `latest`]: Supervisor version to install (e.g. `latest`, `3.1.3`)
 
 * `supervisor_unix_http_server_file` [default: `/var/run/supervisor.sock`]: A path to a UNIX domain socket (e.g. /tmp/supervisord.sock) on which supervisor will listen for HTTP/XML-RPC requests. `supervisorctl` uses XML-RPC to communicate with supervisord over this port
 * `supervisor_unix_http_server_chmod` [default: `'0700'`]: Change the UNIX permission mode bits of the UNIX domain socket to this value at startup
@@ -44,7 +43,7 @@ None
 ---
 - hosts: all
   roles:
-  - supervisor
+    - supervisor
 ```
 
 ##### Adding two programs in one group
