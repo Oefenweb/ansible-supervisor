@@ -1,0 +1,15 @@
+# pre test file for supervisor
+---
+- name: pre | install dependencies
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: true
+    cache_valid_time: 3600
+  with_items:
+    - python
+    - curl
+- name: pre | update pip
+  shell: "curl -sL https://bootstrap.pypa.io/get-pip.py | python -"
+  args:
+    creates: /usr/local/bin/pip

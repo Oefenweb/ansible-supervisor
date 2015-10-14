@@ -1,13 +1,36 @@
 # tasks file for supervisor
 ---
 - include: install.yml
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-install
+
 - include: configure.yml
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-configure
+
 - include: programs.yml
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-programs
+
 - include: groups.yml
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-groups
+
 
 - name: start and enable service
   service:
     name: supervisor
     state: started
     enabled: true
-  tags: [configuration, supervisor, supervisor-start-enable-service]
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-start-enable-service

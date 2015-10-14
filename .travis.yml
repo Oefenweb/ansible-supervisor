@@ -45,9 +45,6 @@ before_install:
   # Remove supervisor
   - sudo apt-get remove --purge supervisor || true
 
-  # Update pip to the latest version.
-  - sudo pip install -U pip
-
 install:
   # Install Ansible.
   - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi

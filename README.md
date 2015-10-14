@@ -8,6 +8,8 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 
 * `pip` (will not installed)
 
+* `python` (will be installed)
+
 #### Variables
 
 * `supervisor_version` [default: `latest`]: Supervisor version to install (e.g. `latest`, `3.1.3`)
@@ -36,6 +38,10 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 ## Dependencies
 
 None
+
+## Recommended
+
+* `ansible-pip` ([see](https://github.com/Oefenweb/ansible-pip)
 
 #### Example
 
