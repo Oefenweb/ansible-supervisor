@@ -1,6 +1,6 @@
 # tasks file for supervisor
 ---
-- name: create directories
+- name: configure | create directories
   file:
     path: "{{ item | dirname }}/"
     state: directory
@@ -14,9 +14,10 @@
     - "{{ supervisor_supervisord_pidfile }}"
     - "{{ supervisor_supervisord_childlogdir }}"
     - "{{ supervisor_include }}"
-  tags: [configuration, supervisor, supervisor-directories]
+  tags:
+    - supervisor-configure-directories
 
-- name: update configuration file - /etc/supervisor/supervisord.conf
+- name: configure | update configuration file - /etc/supervisor/supervisord.conf
   template:
     src: etc/supervisor/supervisord.conf.j2
     dest: "{{ supervisor_configuration_file }}"
@@ -24,9 +25,11 @@
     group: root
     mode: 0640
   notify: restart supervisor
-  tags: [configuration, supervisor, supervisor-configuration]
+  tags:
+    - supervisor-configure-configuration
+    - supervisor-configure-configuration-supervisord-conf
 
-- name: update init script - /etc/init.d/supervisor
+- name: configure | update init script - /etc/init.d/supervisor
   template:
     src: etc/init.d/supervisor.j2
     dest: /etc/init.d/supervisor
@@ -34,4 +37,6 @@
     group: root
     mode: 0755
   notify: restart supervisor
-  tags: [configuration, supervisor, supervisor-configuration]
+  tags:
+    - supervisor-configure-configuration
+    - supervisor-configure-configuration-init

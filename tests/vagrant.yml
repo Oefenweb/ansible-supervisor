@@ -3,5 +3,7 @@
 - hosts: all
   remote_user: vagrant
   sudo: true
+  pre_tasks:
+    - include: pre.yml
   roles:
     - ../../

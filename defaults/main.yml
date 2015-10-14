@@ -1,6 +1,6 @@
 # defaults file for supervisor
 ---
-supervisor_version: 3.1.3
+supervisor_version: latest
 
 supervisor_unix_http_server_file: /var/run/supervisor.sock
 supervisor_unix_http_server_chmod: '0700'

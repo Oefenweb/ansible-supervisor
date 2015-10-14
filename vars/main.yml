@@ -1,7 +1,6 @@
 # vars file for supervisor
 ---
-supervisor_pip_dependencies:
-  - python-dev
-  - python-pip
+supervisor_dependencies:
+  - python
 
 supervisor_configuration_file: /etc/supervisor/supervisord.conf
