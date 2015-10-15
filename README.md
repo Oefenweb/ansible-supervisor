@@ -41,7 +41,7 @@ None
 
 ## Recommended
 
-* `ansible-pip` ([see](https://github.com/Oefenweb/ansible-pip)
+* `ansible-pip` ([see](https://github.com/Oefenweb/ansible-pip))
 
 #### Example
 
