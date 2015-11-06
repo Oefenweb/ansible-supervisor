@@ -37,4 +37,6 @@ numprocs={{ item.value.numprocs }}
 {% endif %}
 {% if item.value.process_name is defined %}
 process_name={{ item.value.process_name }}
+{% elif item.value.numprocs | default(1) > 1 %}
+process_name=%(program_name)s-%(process_num)s
 {% endif %}
