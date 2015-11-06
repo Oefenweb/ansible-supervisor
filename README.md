@@ -31,6 +31,20 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 * `supervisor_include` [default: `'/etc/supervisor/conf.d/*.conf'`]: A (single) absolute file glob of files to include
 
 * `supervisor_programs_present` [default: `{}`, see `templates/etc/supervisor/conf.d/program.conf.j2`]: Program definitions
+* `supervisor_programs_present.{n}` [required]: Program name
+* `supervisor_programs_present.{n}.command` [required]: The command that will be run when this program is started
+* `supervisor_programs_present.{n}.directory` [optional]: A directory to which supervisord should temporarily chdir before exec’ing the child
+* `supervisor_programs_present.{n}.environment` [optional]: A list of key/value pairs that will be placed in the child process’ environment
+* `supervisor_programs_present.{n}.autostart` [optional]: If true, this program will start automatically when supervisord is started
+* `supervisor_programs_present.{n}.autorestart` [optional]: Whether the process will be autorestarted
+* `supervisor_programs_present.{n}.startretries` [optional]: The number of serial failure attempts that supervisord will allow when attempting to start the program before giving up
+* `supervisor_programs_present.{n}.stdout_logfile` [optional]: Put process stdout output in this file
+* `supervisor_programs_present.{n}.stdout_logfile_maxbytes` [optional]: The maximum number of bytes that may be consumed by `stdout_logfile` before it is rotated
+* `supervisor_programs_present.{n}.stderr_logfile` [optional]: Put process stderr output in this file
+* `supervisor_programs_present.{n}.stderr_logfile_maxbytes` [optional]: The maximum number of bytes before logfile rotation for `stderr_logfile`
+* `supervisor_programs_present.{n}.user` [optional]: This UNIX user account will be used as the account which runs the program
+* `supervisor_programs_present.{n}.numprocs` [optional]: Supervisor will start as many instances of this program as named by numprocs
+* `supervisor_programs_present.{n}.process_name` [optional]: Process name, defaults to `%(program_name)s-%(process_num)s` when `numprocs` > 1
 * `supervisor_programs_absent` [default: `{}`]: Program definitions (to be removed)
 * `supervisor_groups_present` [default: `{}`, see `templates/etc/supervisor/conf.d/group.conf.j2`]: Group definitions
 * `supervisor_groups_absent` [default: `{}`]: Group definitions (to be removed)
