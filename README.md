@@ -47,6 +47,9 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 * `supervisor_programs_present.{n}.process_name` [optional]: Process name, defaults to `%(program_name)s-%(process_num)s` when `numprocs` > 1
 * `supervisor_programs_absent` [default: `{}`]: Program definitions (to be removed)
 * `supervisor_groups_present` [default: `{}`, see `templates/etc/supervisor/conf.d/group.conf.j2`]: Group definitions
+* `supervisor_groups_present.{n}` [required]: Group name
+* `supervisor_groups_present.{n}.programs` [required]: List of programs
+* `supervisor_groups_present.{n}.priority` [optional]: A priority number
 * `supervisor_groups_absent` [default: `{}`]: Group definitions (to be removed)
 
 ## Dependencies
