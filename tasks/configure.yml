@@ -1,21 +1,32 @@
 # tasks file for supervisor
 ---
+- name: configure | stat directories
+  stat:
+    path: "{{ item }}/"
+  register: stat_directories
+  with_items:
+    - "{{ supervisor_configuration_file | dirname }}"
+    - "{{ supervisor_unix_http_server_file | dirname }}"
+    - "{{ supervisor_supervisord_logfile | dirname }}"
+    - "{{ supervisor_supervisord_pidfile | dirname }}"
+    - "{{ supervisor_supervisord_childlogdir }}"
+    - "{{ supervisor_include | dirname }}"
+  tags:
+    - supervisor-configure-directories
+    - supervisor-configure-directories-stat
+
 - name: configure | create directories
   file:
-    path: "{{ item | dirname }}/"
+    path: "{{ item.item }}"
     state: directory
     owner: root
     group: root
     mode: 0755
-  with_items:
-    - "{{ supervisor_configuration_file }}"
-    - "{{ supervisor_unix_http_server_file }}"
-    - "{{ supervisor_supervisord_logfile }}"
-    - "{{ supervisor_supervisord_pidfile }}"
-    - "{{ supervisor_supervisord_childlogdir }}"
-    - "{{ supervisor_include }}"
+  with_items: stat_directories.results
+  when: item.stat.exists == false
   tags:
     - supervisor-configure-directories
+    - supervisor-configure-directories-create
 
 - name: configure | update configuration file - /etc/supervisor/supervisord.conf
   template:
