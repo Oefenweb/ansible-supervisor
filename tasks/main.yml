@@ -28,7 +28,7 @@
 - name: start and enable service
   service:
     name: supervisor
-    state: started
+    state: "{{ supervisor_state }}"
     enabled: true
   tags:
     - configuration

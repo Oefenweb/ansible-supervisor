@@ -13,7 +13,8 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 #### Variables
 
 * `supervisor_version` [default: `latest`]: Supervisor version to install (e.g. `latest`, `3.1.3`)
-
+* `supervisor_state` [default: `started`]: Describes the desired state
+  for the supervisor service to be in.
 * `supervisor_unix_http_server_file` [default: `/var/run/supervisor.sock`]: A path to a UNIX domain socket (e.g. /tmp/supervisord.sock) on which supervisor will listen for HTTP/XML-RPC requests. `supervisorctl` uses XML-RPC to communicate with supervisord over this port
 * `supervisor_unix_http_server_chmod` [default: `'0700'`]: Change the UNIX permission mode bits of the UNIX domain socket to this value at startup
 
