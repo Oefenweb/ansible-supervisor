@@ -11,7 +11,7 @@ galaxy_info:
     versions:
       - precise
       - trusty
-  categories:
+  galaxy_tags:
     - web
     - system
     - networking
