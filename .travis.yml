@@ -44,7 +44,7 @@ before_install:
   - sudo apt-get update -qq
 
   # Remove supervisor
-  - sudo apt-get remove --purge supervisor || true
+  - sudo apt-get remove --purge --yes supervisor || true
 
 install:
   # Install Ansible.
