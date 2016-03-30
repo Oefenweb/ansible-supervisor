@@ -22,7 +22,7 @@
     owner: root
     group: root
     mode: 0755
-  with_items: stat_directories.results
+  with_items: "{{ stat_directories.results }}"
   when: item.stat.exists == false
   tags:
     - supervisor-configure-directories

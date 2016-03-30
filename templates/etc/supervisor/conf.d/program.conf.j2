@@ -40,3 +40,15 @@ process_name={{ item.value.process_name }}
 {% elif item.value.numprocs | default(1) > 1 %}
 process_name=%(program_name)s-%(process_num)s
 {% endif %}
+{% if item.value.stopsignal is defined %}
+stopsignal={{ item.value.stopsignal }}
+{% endif %}
+{% if item.value.stopwaitsecs is defined %}
+stopwaitsecs={{ item.value.stopwaitsecs }}
+{% endif %}
+{% if item.value.stopasgroup is defined %}
+stopasgroup={{ 'true' if item.value.stopasgroup | bool else 'false'}}
+{% endif %}
+{% if item.value.killasgroup is defined %}
+killasgroup={{ 'true' if item.value.killasgroup | bool else 'false'}}
+{% endif %}
