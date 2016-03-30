@@ -7,7 +7,7 @@
     owner: root
     group: root
     mode: 0640
-  with_dict: supervisor_groups_present
+  with_dict: "{{ supervisor_groups_present }}"
   notify: restart supervisor
   tags:
     - supervisor-groups-present
@@ -16,7 +16,7 @@
   file:
     path: "/etc/supervisor/conf.d/{{ item.key }}.conf"
     state: absent
-  with_dict: supervisor_groups_absent
+  with_dict: "{{ supervisor_groups_absent }}"
   notify: restart supervisor
   tags:
     - supervisor-groups-absent
