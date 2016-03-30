@@ -7,7 +7,6 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 #### Requirements
 
 * `pip` (will not installed)
-
 * `python` (will be installed)
 
 #### Variables
@@ -45,7 +44,12 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 * `supervisor_programs_present.{n}.user` [optional]: This UNIX user account will be used as the account which runs the program
 * `supervisor_programs_present.{n}.numprocs` [optional]: Supervisor will start as many instances of this program as named by numprocs
 * `supervisor_programs_present.{n}.process_name` [optional]: Process name, defaults to `%(program_name)s-%(process_num)s` when `numprocs` > 1
+* `supervisor_programs_present.{n}.stopsignal` [optional]: The signal used to kill the program when a stop is requested
+* `supervisor_programs_present.{n}.stopwaitsecs` [optional]: The number of seconds to wait for the OS to return a `SIGCHILD` to supervisord after the program has been sent a stopsignal
+* `supervisor_programs_present.{n}.stopasgroup` [optional]: If `true`, the flag causes supervisor to send the stop signal to the whole process group and implies `killasgroup` is `true`
+* `supervisor_programs_present.{n}.killasgroup` [optional]: If `true`, when resorting to send `SIGKILL` to the program to terminate it send it to its whole process group instead, taking care of its children as well
 * `supervisor_programs_absent` [default: `{}`]: Program definitions (to be removed)
+
 * `supervisor_groups_present` [default: `{}`, see `templates/etc/supervisor/conf.d/group.conf.j2`]: Group definitions
 * `supervisor_groups_present.{n}` [required]: Group name
 * `supervisor_groups_present.{n}.programs` [required]: List of programs
