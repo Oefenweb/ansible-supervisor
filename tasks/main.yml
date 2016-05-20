@@ -24,7 +24,6 @@
     - supervisor
     - supervisor-groups
 
-
 - name: start and enable service
   service:
     name: supervisor

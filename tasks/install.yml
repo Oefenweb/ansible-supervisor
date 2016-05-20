@@ -1,6 +1,7 @@
 # tasks file for supervisor
 ---
 - name: install | dependencies
+  become: yes
   apt:
     name: "{{ item }}"
     state: latest
@@ -11,6 +12,7 @@
     - supervisor-install-dependencies
 
 - name: install | supervisor (specific version)
+  become: yes
   pip:
     name: supervisor
     version: "{{ supervisor_version }}"
@@ -19,6 +21,7 @@
     - supervisor-install-specific
 
 - name: install | supervisor (latest version)
+  become: yes
   pip:
     name: supervisor
     state: "{{ supervisor_version }}"

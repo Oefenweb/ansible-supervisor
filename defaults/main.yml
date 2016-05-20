@@ -5,6 +5,9 @@ supervisor_state: started
 supervisor_unix_http_server_file: /var/run/supervisor.sock
 supervisor_unix_http_server_chmod: '0700'
 
+supervisor_system_user: root
+supervisor_system_group: root
+
 supervisor_inet_http_server_enabled: false
 supervisor_inet_http_server_port: 9001
 supervisor_inet_http_server_username: admin
