@@ -25,6 +25,7 @@
     - supervisor-groups
 
 - name: start and enable service
+  become: yes
   service:
     name: supervisor
     state: "{{ supervisor_state }}"
