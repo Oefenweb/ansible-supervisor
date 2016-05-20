@@ -1,24 +1,28 @@
 # tasks file for supervisor
 ---
 - include: install.yml
+  become: yes
   tags:
     - configuration
     - supervisor
     - supervisor-install
 
 - include: configure.yml
+  become: yes
   tags:
     - configuration
     - supervisor
     - supervisor-configure
 
 - include: programs.yml
+  become: yes
   tags:
     - configuration
     - supervisor
     - supervisor-programs
 
 - include: groups.yml
+  become: yes
   tags:
     - configuration
     - supervisor

@@ -1,7 +1,6 @@
 # tasks file for supervisor
 ---
 - name: install | dependencies
-  become: yes
   apt:
     name: "{{ item }}"
     state: latest
