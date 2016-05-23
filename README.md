@@ -16,6 +16,9 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 * `supervisor_unix_http_server_file` [default: `/var/run/supervisor.sock`]: A path to a UNIX domain socket (e.g. /tmp/supervisord.sock) on which supervisor will listen for HTTP/XML-RPC requests. `supervisorctl` uses XML-RPC to communicate with supervisord over this port
 * `supervisor_unix_http_server_chmod` [default: `'0700'`]: Change the UNIX permission mode bits of the UNIX domain socket to this value at startup
 
+* `supervisor_system_user` [default: `root`]: Name of the user that should own the config file/directory
+* `supervisor_system_group` [default: `root`]: Name of the group that should own the config file/directory
+
 * `supervisor_inet_http_server_enabled` [default: `false`]: Whether or not to enable the HTTP server
 * `supervisor_inet_http_server_port` [default: `9001`]: A TCP host:port value or (e.g. `127.0.0.1:9001`) on which supervisor will listen for HTTP/XML-RPC requests. `supervisorctl` will use XML-RPC to communicate with supervisord over this port
 * `supervisor_inet_http_server_username` [default: `admin`]: The username required for authentication to this HTTP server **Make sure to change!**
