@@ -1,6 +1,8 @@
 # handlers file for supervisor
 ---
 - name: restart supervisor
+  become: yes
+  # become_user: "{{ supervisor_system_user }}"
   service:
     name: supervisor
     state: restarted
