@@ -7,6 +7,18 @@
     update_cache: true
     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
   with_items: "{{ supervisor_dependencies }}"
+  when: "supervisor_version != 'apt'"  # if we are getting it from apt we let apt resolve dependencies
+  tags:
+    - supervisor-install-dependencies
+
+- name: install | from apt
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+  with_items: "{{ supervisor_dependencies }}"
+  when: "supervisor_version == 'apt'"  # if we are getting it from apt we let apt resolve dependencies
   tags:
     - supervisor-install-dependencies
 
@@ -14,7 +26,7 @@
   pip:
     name: supervisor
     version: "{{ supervisor_version }}"
-  when: "supervisor_version != 'latest'"
+  when: "supervisor_version != 'apt' and supervisor_version != 'latest'"
   tags:
     - supervisor-install-specific
 
@@ -22,6 +34,6 @@
   pip:
     name: supervisor
     state: "{{ supervisor_version }}"
-  when: "supervisor_version == 'latest'"
+  when: "supervisor_version != 'apt' and supervisor_version == 'latest'"
   tags:
     - supervisor-install-latest

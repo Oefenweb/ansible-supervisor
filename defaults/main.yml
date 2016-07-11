@@ -1,6 +1,6 @@
 # defaults file for supervisor
 ---
-supervisor_version: latest
+supervisor_version: latest  # 'apt' for getting it from apt (always latest) instead of getting the pip version
 supervisor_state: started
 supervisor_unix_http_server_file: /var/run/supervisor.sock
 supervisor_unix_http_server_chmod: '0700'
