@@ -13,11 +13,10 @@
 
 - name: install | from apt
   apt:
-    name: "{{ item }}"
+    name: supervisor
     state: latest
     update_cache: true
     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
-  with_items: "{{ supervisor_dependencies }}"
   when: "supervisor_version == 'apt'"  # if we are getting it from apt we let apt resolve dependencies
   tags:
     - supervisor-install-dependencies
