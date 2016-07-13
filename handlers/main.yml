@@ -1,9 +1,12 @@
 # handlers file for supervisor
 ---
 - name: restart supervisor
-  become: yes
-  # become_user: "{{ supervisor_system_user }}"
   service:
     name: supervisor
     state: restarted
   when: supervisor_state == 'started'
+
+- name: update supervisor
+  become: yes
+  shell: "supervisorctl reread && supervisorctl update"
+  # supervisorctl ansible module is buggy. using shell command instead.

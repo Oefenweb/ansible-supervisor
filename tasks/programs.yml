@@ -8,7 +8,7 @@
     group: "{{ supervisor_system_group }}"
     mode: 0640
   with_dict: "{{ supervisor_programs_present }}"
-  notify: restart supervisor
+  notify: update supervisor
   tags:
     - supervisor-programs-present
 
@@ -17,6 +17,6 @@
     path: "/etc/supervisor/conf.d/{{ item.key }}.conf"
     state: absent
   with_dict: "{{ supervisor_programs_absent }}"
-  notify: restart supervisor
+  notify: update supervisor
   tags:
     - supervisor-programs-absent
