@@ -1,9 +1,13 @@
 # handlers file for supervisor
 ---
 - name: restart supervisor
-  service:
-    name: supervisor
-    state: restarted
+  # service module doesnt work sell with supervisor init script on ubuntu
+  #service:
+  #  name: supervisor
+  #  state: restarted
+  # using command line instead
+  become: yes
+  shell: "service supervisor restart"
   when: supervisor_state == 'started'
 
 - name: update supervisor
