@@ -4,4 +4,3 @@
   service:
     name: supervisor
     state: restarted
-  when: supervisor_state == 'started'
