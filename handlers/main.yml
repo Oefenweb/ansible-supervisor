@@ -3,5 +3,5 @@
 - name: restart supervisor
   service:
     name: supervisor
-    state: restarted
+    state: restarted 
   when: supervisor_state == 'started'
