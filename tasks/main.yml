@@ -24,6 +24,39 @@
     - supervisor
     - supervisor-groups
 
+- name: enable service
+  service:
+    name: supervisor
+    enabled: true
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-enable-service
+
+- name: stop supervisor forcibly
+  command: service supervisor force-stop
+  ignore_errors: True
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-force-stop-service
+
+- name: wait 3 seconds for supervisor to stop
+  command: sleep 3
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-wait-for-stop
+
+- name: ensure supervisor stopped
+  service:
+    name: supervisor
+    state: stopped
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-stop-service
+
 - name: start and enable service
   service:
     name: supervisor
