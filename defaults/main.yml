@@ -4,9 +4,15 @@ supervisor_version: latest
 supervisor_state: started
 supervisor_unix_http_server_file: /var/run/supervisor.sock
 supervisor_unix_http_server_chmod: '0700'
+supervisor_unix_http_server_chown: ''
+supervisor_unix_http_server_username: admin
+supervisor_unix_http_server_password: '4ubA&Et=ASPe'
+
 
 supervisor_system_user: root
 supervisor_system_group: root
+
+supervisor_user: ''
 
 supervisor_configuration_file: /etc/supervisor/supervisord.conf
 

@@ -5,6 +5,14 @@
 [unix_http_server]
 file={{ supervisor_unix_http_server_file }} ; (the path to the socket file)
 chmod={{ supervisor_unix_http_server_chmod }} ; sockef file mode (default 0700)
+{% if supervisor_unix_http_server_chown %}
+chown={{supervisor_unix_http_server_chown}}
+{% endif %}
+
+{% if supervisor_unix_http_server_username %}
+username = {{ supervisor_unix_http_server_username }}
+password = {{ supervisor_unix_http_server_password }}
+{% endif %}
 
 {% if supervisor_inet_http_server_enabled %}
 [inet_http_server]
@@ -14,6 +22,9 @@ password = {{ supervisor_inet_http_server_password }}
 {% endif %}
 
 [supervisord]
+{%  if supervisor_user %}
+user={{ supervisor_user }}
+{% endif %}
 logfile={{ supervisor_supervisord_logfile }} ; (main log file;default $CWD/supervisord.log)
 pidfile={{ supervisor_supervisord_pidfile }} ; (supervisord pidfile;default supervisord.pid)
 childlogdir={{ supervisor_supervisord_childlogdir }} ; ('AUTO' child log dir, default $TEMP)

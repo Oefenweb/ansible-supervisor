@@ -15,6 +15,9 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 * `supervisor_state` [default: `started`]: Describes the desired state for the supervisor service to be in (e.g. `started`, `stopped`)
 * `supervisor_unix_http_server_file` [default: `/var/run/supervisor.sock`]: A path to a UNIX domain socket (e.g. /tmp/supervisord.sock) on which supervisor will listen for HTTP/XML-RPC requests. `supervisorctl` uses XML-RPC to communicate with supervisord over this port
 * `supervisor_unix_http_server_chmod` [default: `'0700'`]: Change the UNIX permission mode bits of the UNIX domain socket to this value at startup
+* `supervisor_unix_http_server_chmown` [default: `''`]: If set change the user and group of the socket file to this value otherwise user the user and group of the user who started supervisor
+* `supervisor_unix_http_server_username` [default: ``]: If not empty then set the username required for authentication to this HTTP server **Make sure to change!**
+* `supervisor_unix_http_server_password` [default: ``]: If not empty then set the password required for authentication to this HTTP server. This can be a cleartext password, or can be specified as a SHA-1 hash if prefixed by the string `{SHA}` **Make sure to change!**
 
 * `supervisor_system_user` [default: `root`]: Name of the user that should own the config file/directory
 * `supervisor_system_group` [default: `root`]: Name of the group that should own the config file/directory
@@ -24,6 +27,7 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 * `supervisor_inet_http_server_username` [default: `admin`]: The username required for authentication to this HTTP server **Make sure to change!**
 * `supervisor_inet_http_server_password` [default: `'4ubA&Et=ASPe'`]: The password required for authentication to this HTTP server. This can be a cleartext password, or can be specified as a SHA-1 hash if prefixed by the string `{SHA}` **Make sure to change!**
 
+* `supervisor_supervisord_user` [default: ``]: If set, will instruct supervisord to switch users to this UNIX user account before doing any meaningful processing.
 * `supervisor_supervisord_logfile` [default: `/var/log/supervisor/supervisord.log`]: The path to the activity log of the supervisord process
 * `supervisor_supervisord_pidfile` [default: `/var/run/supervisord.pid`]: The location in which supervisord keeps its pid file
 * `supervisor_supervisord_childlogdir` [default: `/var/log/supervisor`]: The directory used for `AUTO` child log files
