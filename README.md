@@ -15,6 +15,9 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 * `supervisor_state` [default: `started`]: Describes the desired state for the supervisor service to be in (e.g. `started`, `stopped`)
 * `supervisor_unix_http_server_file` [default: `/var/run/supervisor.sock`]: A path to a UNIX domain socket (e.g. /tmp/supervisord.sock) on which supervisor will listen for HTTP/XML-RPC requests. `supervisorctl` uses XML-RPC to communicate with supervisord over this port
 * `supervisor_unix_http_server_chmod` [default: `'0700'`]: Change the UNIX permission mode bits of the UNIX domain socket to this value at startup
+* `supervisor_unix_http_server_chown` [optional]: The user and group of `/var/run/supervisor.sock` file. Use the following format: `user_name:group_name`
+* `supervisor_unix_http_server_username` [optional]: The username for authentication to the HTTP/XML-RPC server.
+* `supervisor_unix_http_server_password` [optional]: The password for authentication to the HTTP/XML-RPC server. This can be a cleartext password, or can be specified as a SHA-1 hash if prefixed by the string `{SHA}`
 
 * `supervisor_system_user` [default: `root`]: Name of the user that should own the config file/directory
 * `supervisor_system_group` [default: `root`]: Name of the group that should own the config file/directory

@@ -5,6 +5,15 @@
 [unix_http_server]
 file={{ supervisor_unix_http_server_file }} ; (the path to the socket file)
 chmod={{ supervisor_unix_http_server_chmod }} ; sockef file mode (default 0700)
+{% if supervisor_unix_http_server_chown is defined %}
+chown = {{ supervisor_unix_http_server_chown }}
+{% endif %}
+{% if supervisor_unix_http_server_username is defined %}
+username = {{ supervisor_unix_http_server_username }}
+{% endif %}
+{% if supervisor_unix_http_server_password is defined %}
+password = {{ supervisor_unix_http_server_password }}
+{% endif %}
 
 {% if supervisor_inet_http_server_enabled %}
 [inet_http_server]
