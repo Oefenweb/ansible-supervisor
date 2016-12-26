@@ -23,6 +23,7 @@ password = {{ supervisor_inet_http_server_password }}
 {% endif %}
 
 [supervisord]
+nodaemon={{ supervisor_supervisord_nodaemon }} ; (supervisord nodaemon option;default false)
 logfile={{ supervisor_supervisord_logfile }} ; (main log file;default $CWD/supervisord.log)
 pidfile={{ supervisor_supervisord_pidfile }} ; (supervisord pidfile;default supervisord.pid)
 childlogdir={{ supervisor_supervisord_childlogdir }} ; ('AUTO' child log dir, default $TEMP)
