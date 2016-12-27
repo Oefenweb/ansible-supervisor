@@ -5,3 +5,10 @@
     name: supervisor
     state: restarted
   when: supervisor_state == 'started'
+
+- name: restart supervisor via systemd
+  systemd:
+    name: supervisor
+    state: "{{ supervisor_state }}"
+    enabled: yes
+    daemon_reload: yes

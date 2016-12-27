@@ -1,0 +1,17 @@
+# Resource: https://github.com/zokeber/supervisor-systemd/blob/master/etc/systemd/system/supervisord.service
+
+[Unit]
+Description=Supervisor process control system for UNIX
+Documentation=http://supervisord.org
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/supervisord -n -c {{ supervisor_configuration_file }}
+ExecStop=/usr/local/bin/supervisorctl $OPTIONS shutdown
+ExecReload=/usr/local/bin/supervisorctl $OPTIONS reload
+KillMode=process
+Restart=on-failure
+RestartSec=50s
+
+[Install]
+WantedBy=multi-user.target
