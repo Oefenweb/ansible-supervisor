@@ -1,6 +1,6 @@
 # defaults file for supervisor
 ---
-supervisor_version: latest
+supervisor_version: latest  # 'apt' for getting it from apt (always latest) instead of getting the pip version
 supervisor_state: started
 supervisor_unix_http_server_file: /var/run/supervisor.sock
 supervisor_unix_http_server_chmod: '0700'
@@ -15,6 +15,7 @@ supervisor_inet_http_server_port: 9001
 supervisor_inet_http_server_username: admin
 supervisor_inet_http_server_password: '4ubA&Et=ASPe'
 
+supervisor_supervisord_nodaemon: false
 supervisor_supervisord_logfile: /var/log/supervisor/supervisord.log
 supervisor_supervisord_pidfile: /var/run/supervisord.pid
 supervisor_supervisord_childlogdir: /var/log/supervisor

@@ -47,6 +47,7 @@
     owner: "{{ supervisor_system_user }}"
     group: "{{ supervisor_system_group }}"
     mode: 0755
+  when: "supervisor_version != 'apt'"
   notify: restart supervisor
   tags:
     - supervisor-configure-configuration
