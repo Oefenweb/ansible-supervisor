@@ -12,6 +12,22 @@
     - supervisor
     - supervisor-configure
 
+- include: service-initd.yml
+  when: ansible_distribution_version | version_compare('15.04', '<')
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-configure
+    - supervisor-configure-initd
+
+- include: service-systemd.yml
+  when: ansible_distribution_version | version_compare('15.04', '>=')
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-configure
+    - supervisor-configure-systemd
+
 - include: programs.yml
   tags:
     - configuration

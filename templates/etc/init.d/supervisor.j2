@@ -30,8 +30,8 @@
 . /lib/lsb/init-functions
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/local/bin/supervisord
-SUPERVISORCTL=/usr/local/bin/supervisorctl
+DAEMON={{ supervisor_install_prefix }}/supervisord
+SUPERVISORCTL={{ supervisor_install_prefix }}/supervisorctl
 NAME=supervisord
 DESC=supervisor
 
@@ -39,14 +39,13 @@ test -x $DAEMON || exit 0
 
 LOGDIR={{ supervisor_supervisord_logfile | dirname }}
 PIDFILE={{ supervisor_supervisord_pidfile }}
-DODTIME=5                   # Time to wait for the server to die, in seconds
-                            # If this value is set too low you might not
-                            # let some servers to die gracefully and
-                            # 'restart' will not work
+# Time to wait for the server to die, in seconds. If this value is set too low you might not let some servers to die
+# gracefully and 'restart' will not work
+DODTIME={{ supervisor_supervisord_restart_sec }}
 
 # Include supervisor defaults if available
-if [ -f /etc/default/supervisor ] ; then
-	. /etc/default/supervisor
+if [ -f {{ supervisor_default_file }} ] ; then
+	. {{ supervisor_default_file }}
 fi
 DAEMON_OPTS="-c {{ supervisor_configuration_file }} $DAEMON_OPTS"
 

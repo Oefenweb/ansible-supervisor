@@ -5,6 +5,7 @@
     path: "{{ item }}/"
   register: stat_directories
   with_items:
+    - "{{ supervisor_default_file | dirname }}"
     - "{{ supervisor_configuration_file | dirname }}"
     - "{{ supervisor_unix_http_server_file | dirname }}"
     - "{{ supervisor_supervisord_logfile | dirname }}"
@@ -28,9 +29,21 @@
     - supervisor-configure-directories
     - supervisor-configure-directories-create
 
+- name: configure | update configuration file - /etc/default/supervisor
+  template:
+    src: "{{ supervisor_default_file.lstrip('/') }}.j2"
+    dest: "{{ supervisor_default_file }}"
+    owner: "{{ supervisor_system_user }}"
+    group: "{{ supervisor_system_group }}"
+    mode: 0644
+  notify: restart supervisor
+  tags:
+    - supervisor-configure-configuration
+    - supervisor-configure-configuration-default-supervisor
+
 - name: configure | update configuration file - /etc/supervisor/supervisord.conf
   template:
-    src: etc/supervisor/supervisord.conf.j2
+    src: "{{ supervisor_configuration_file.lstrip('/') }}.j2"
     dest: "{{ supervisor_configuration_file }}"
     owner: "{{ supervisor_system_user }}"
     group: "{{ supervisor_system_group }}"
@@ -39,15 +52,3 @@
   tags:
     - supervisor-configure-configuration
     - supervisor-configure-configuration-supervisord-conf
-
-- name: configure | update init script - /etc/init.d/supervisor
-  template:
-    src: etc/init.d/supervisor.j2
-    dest: /etc/init.d/supervisor
-    owner: "{{ supervisor_system_user }}"
-    group: "{{ supervisor_system_group }}"
-    mode: 0755
-  notify: restart supervisor
-  tags:
-    - supervisor-configure-configuration
-    - supervisor-configure-configuration-init

@@ -1,0 +1,12 @@
+# tasks file for supervisor
+---
+- name: configure | initd | update script
+  template:
+    src: etc/init.d/supervisor.j2
+    dest: /etc/init.d/supervisor
+    owner: "{{ supervisor_system_user }}"
+    group: "{{ supervisor_system_group }}"
+    mode: 0755
+  notify: restart supervisor
+  tags:
+    - supervisor-service-upstart-update

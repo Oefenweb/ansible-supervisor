@@ -96,7 +96,7 @@ supervisor_programs_present:
     stderr_logfile_maxbytes: 0
     user: vagrant
     numprocs: 8
-    process_name: %(program_name)s-%(process_num)s
+    process_name: '%(program_name)s-%(process_num)s'
   bar:
     command: 'sleep 10'
     directory: /tmp

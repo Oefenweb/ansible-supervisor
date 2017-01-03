@@ -1,0 +1,19 @@
+# tasks file for supervisor
+---
+- name: configure | systemd | update script
+  template:
+    src: templates/lib/systemd/system/supervisor.j2
+    dest: /lib/systemd/system/supervisor.service
+    owner: "{{ supervisor_system_user }}"
+    group: "{{ supervisor_system_group }}"
+    mode: 0644
+  register: _update_systemd_script
+  notify: restart supervisor
+  tags:
+    - supervisor-service-systemd-update
+
+- name: service | systemd | reload
+  command: systemctl daemon-reload
+  when: _update_systemd_script | changed
+  tags:
+    - supervisor-service-systemd-reload
