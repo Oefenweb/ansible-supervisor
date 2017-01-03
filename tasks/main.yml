@@ -24,6 +24,15 @@
     - supervisor
     - supervisor-groups
 
+- name: get systemd units
+  command: systemctl list-units
+  register: systemd_units
+  changed_when: false
+
+- name: create systemd supervisor unit
+  command: systemctl enable supervisor
+  when: "'supervisor.service' not in systemd_units.stdout"
+
 - name: start and enable service
   service:
     name: supervisor
