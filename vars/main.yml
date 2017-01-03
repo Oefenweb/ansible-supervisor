@@ -2,3 +2,5 @@
 ---
 supervisor_dependencies:
   - python
+supervisor_install_prefix: /usr/local/bin
+supervisor_default_file: /etc/default/supervisor
