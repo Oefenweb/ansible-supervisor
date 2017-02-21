@@ -17,6 +17,9 @@ autorestart={{ 'true' if item.value.autorestart | bool else 'false'}}
 {% if item.value.startretries is defined %}
 startretries={{ item.value.startretries }}
 {% endif %}
+{% if item.value.startsecs is defined %}
+startsecs={{ item.value.startsecs }}
+{% endif %}
 {% if item.value.stdout_logfile is defined %}
 stdout_logfile={{ item.value.stdout_logfile }}
 {% endif %}
