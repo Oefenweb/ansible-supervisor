@@ -44,6 +44,7 @@ Set up the latest or a specific version of supervisor in Ubuntu systems.
 * `supervisor_programs_present.{n}.autostart` [optional]: If true, this program will start automatically when supervisord is started
 * `supervisor_programs_present.{n}.autorestart` [optional]: Whether the process will be autorestarted
 * `supervisor_programs_present.{n}.startretries` [optional]: The number of serial failure attempts that supervisord will allow when attempting to start the program before giving up
+* `supervisor_programs_present.{n}.startsecs` [optional]: The total number of seconds which the program needs to stay running after a startup to consider the start successful
 * `supervisor_programs_present.{n}.stdout_logfile` [optional]: Put process stdout output in this file
 * `supervisor_programs_present.{n}.stdout_logfile_maxbytes` [optional]: The maximum number of bytes that may be consumed by `stdout_logfile` before it is rotated
 * `supervisor_programs_present.{n}.stderr_logfile` [optional]: Put process stderr output in this file
