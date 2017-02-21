@@ -9,13 +9,16 @@ directory={{ item.value.directory }}
 environment={{ item.value.environment }}
 {% endif %}
 {% if item.value.autostart is defined %}
-autostart={{ 'true' if item.value.autostart | bool else 'false' }}
+autostart={{ item.value.autostart | default(false) | bool | to_json }}
 {% endif %}
 {% if item.value.autorestart is defined %}
-autorestart={{ 'true' if item.value.autorestart | bool else 'false'}}
+autorestart={{ item.value.autorestart | default(false) | bool | to_json}}
 {% endif %}
 {% if item.value.startretries is defined %}
 startretries={{ item.value.startretries }}
+{% endif %}
+{% if item.value.startsecs is defined %}
+startsecs={{ item.value.startsecs }}
 {% endif %}
 {% if item.value.stdout_logfile is defined %}
 stdout_logfile={{ item.value.stdout_logfile }}
@@ -47,8 +50,8 @@ stopsignal={{ item.value.stopsignal }}
 stopwaitsecs={{ item.value.stopwaitsecs }}
 {% endif %}
 {% if item.value.stopasgroup is defined %}
-stopasgroup={{ 'true' if item.value.stopasgroup | bool else 'false'}}
+stopasgroup={{ item.value.stopasgroup | default(false) | bool | to_json }}
 {% endif %}
 {% if item.value.killasgroup is defined %}
-killasgroup={{ 'true' if item.value.killasgroup | bool else 'false'}}
+killasgroup={{ item.value.killasgroup | default(false) | bool | to_json }}
 {% endif %}
