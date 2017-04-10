@@ -13,7 +13,7 @@
     - supervisor-configure
 
 - include: service-initd.yml
-  when: (ansible_os_family == 'Ubuntu' and (ansible_distribution_version | version_compare('15.04', '<')))
+  when: (ansible_distribution == 'Ubuntu' and (ansible_distribution_version | version_compare('15.04', '<')))
   tags:
     - configuration
     - supervisor
@@ -21,8 +21,8 @@
     - supervisor-configure-initd
 
 - include: service-systemd.yml
-  when: (ansible_os_family == 'Debian') or
-        (ansible_os_family == 'Ubuntu' and (ansible_distribution_version | version_compare('15.04', '>=')))
+  when: (ansible_distribution == 'Debian') or
+        (ansible_distribution == 'Ubuntu' and (ansible_distribution_version | version_compare('15.04', '>=')))
   tags:
     - configuration
     - supervisor
