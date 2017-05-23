@@ -40,6 +40,15 @@
     - supervisor
     - supervisor-groups
 
+- name: stop supervisor
+  service:
+    name: supervisor
+    state: stopped
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-stop-service
+
 - name: start and enable service
   service:
     name: supervisor
