@@ -43,8 +43,8 @@
 - name: start and enable service
   service:
     name: supervisor
-    state: "{{ supervisor_state }}"
-    enabled: true
+    state: "{{ service_default_state | default('started') }}"
+    enabled: "{{ service_default_enabled | default(true) | bool }}"
   tags:
     - configuration
     - supervisor

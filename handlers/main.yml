@@ -4,4 +4,4 @@
   service:
     name: supervisor
     state: restarted
-  when: supervisor_state == 'started'
+  when: service_default_state | default('started') == 'started'
