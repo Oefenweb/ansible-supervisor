@@ -39,7 +39,7 @@ Set up the latest or a specific version of supervisor in Debian-like systems.
 * `supervisor_programs_present.{n}` [required]: Program name
 * `supervisor_programs_present.{n}.command` [required]: The command that will be run when this program is started
 * `supervisor_programs_present.{n}.directory` [optional]: A directory to which supervisord should temporarily chdir before exec’ing the child
-* `supervisor_programs_present.{n}.environment` [optional]: A list of key/value pairs that will be placed in the child process’ environment
+* `supervisor_programs_present.{n}.environment` [optional]: A list of key/value pairs comma separated that will be placed in the child process’ environment (e.g. 'KEY1="VALUE1",KEY2="VALUE2"')
 * `supervisor_programs_present.{n}.autostart` [optional]: If true, this program will start automatically when supervisord is started
 * `supervisor_programs_present.{n}.autorestart` [optional]: Whether the process will be autorestarted
 * `supervisor_programs_present.{n}.startretries` [optional]: The number of serial failure attempts that supervisord will allow when attempting to start the program before giving up
