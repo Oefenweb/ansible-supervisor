@@ -12,7 +12,7 @@ environment={{ item.value.environment }}
 autostart={{ item.value.autostart | default(false) | bool | to_json }}
 {% endif %}
 {% if item.value.autorestart is defined %}
-autorestart={{ item.value.autorestart | default(false) | bool | to_json}}
+autorestart={{ item.value.autorestart | default('unexpected')| to_json}}
 {% endif %}
 {% if item.value.startretries is defined %}
 startretries={{ item.value.startretries }}
