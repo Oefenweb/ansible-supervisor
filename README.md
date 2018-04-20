@@ -40,8 +40,8 @@ Set up the latest or a specific version of supervisor in Debian-like systems.
 * `supervisor_programs_present.{n}.command` [required]: The command that will be run when this program is started
 * `supervisor_programs_present.{n}.directory` [optional]: A directory to which supervisord should temporarily chdir before exec’ing the child
 * `supervisor_programs_present.{n}.environment` [optional]: A list of key/value pairs comma separated that will be placed in the child process’ environment (e.g. 'KEY1="VALUE1",KEY2="VALUE2"')
-* `supervisor_programs_present.{n}.autostart` [optional]: If true, this program will start automatically when supervisord is started
-* `supervisor_programs_present.{n}.autorestart` [optional]: Whether the process will be autorestarted
+* `supervisor_programs_present.{n}.autostart` [optional, default `true`]: If true, this program will start automatically when supervisord is started
+* `supervisor_programs_present.{n}.autorestart` [optional, default `unexpected`]: Whether the process will be autorestarted (e.g. `true`, `false`)
 * `supervisor_programs_present.{n}.startretries` [optional]: The number of serial failure attempts that supervisord will allow when attempting to start the program before giving up
 * `supervisor_programs_present.{n}.startsecs` [optional]: The total number of seconds which the program needs to stay running after a startup to consider the start successful
 * `supervisor_programs_present.{n}.stdout_logfile` [optional]: Put process stdout output in this file
@@ -53,8 +53,8 @@ Set up the latest or a specific version of supervisor in Debian-like systems.
 * `supervisor_programs_present.{n}.process_name` [optional]: Process name, defaults to `%(program_name)s-%(process_num)s` when `numprocs` > 1
 * `supervisor_programs_present.{n}.stopsignal` [optional]: The signal used to kill the program when a stop is requested
 * `supervisor_programs_present.{n}.stopwaitsecs` [optional]: The number of seconds to wait for the OS to return a `SIGCHILD` to supervisord after the program has been sent a stopsignal
-* `supervisor_programs_present.{n}.stopasgroup` [optional]: If `true`, the flag causes supervisor to send the stop signal to the whole process group and implies `killasgroup` is `true`
-* `supervisor_programs_present.{n}.killasgroup` [optional]: If `true`, when resorting to send `SIGKILL` to the program to terminate it send it to its whole process group instead, taking care of its children as well
+* `supervisor_programs_present.{n}.stopasgroup` [optional, default `false`]: If `true`, the flag causes supervisor to send the stop signal to the whole process group and implies `killasgroup` is `true`
+* `supervisor_programs_present.{n}.killasgroup` [optional, default `false`]: If `true`, when resorting to send `SIGKILL` to the program to terminate it send it to its whole process group instead, taking care of its children as well
 * `supervisor_programs_absent` [default: `{}`]: Program definitions (to be removed)
 
 * `supervisor_groups_present` [default: `{}`, see `templates/etc/supervisor/conf.d/group.conf.j2`]: Group definitions

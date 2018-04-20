@@ -9,10 +9,10 @@ directory={{ item.value.directory }}
 environment={{ item.value.environment }}
 {% endif %}
 {% if item.value.autostart is defined %}
-autostart={{ item.value.autostart | default(false) | bool | to_json }}
+autostart={{ item.value.autostart | bool | to_json }}
 {% endif %}
 {% if item.value.autorestart is defined %}
-autorestart={{ item.value.autorestart | default(false) | bool | to_json}}
+autorestart={{ item.value.autorestart | to_json}}
 {% endif %}
 {% if item.value.startretries is defined %}
 startretries={{ item.value.startretries }}
@@ -50,8 +50,8 @@ stopsignal={{ item.value.stopsignal }}
 stopwaitsecs={{ item.value.stopwaitsecs }}
 {% endif %}
 {% if item.value.stopasgroup is defined %}
-stopasgroup={{ item.value.stopasgroup | default(false) | bool | to_json }}
+stopasgroup={{ item.value.stopasgroup | bool | to_json }}
 {% endif %}
 {% if item.value.killasgroup is defined %}
-killasgroup={{ item.value.killasgroup | default(false) | bool | to_json }}
+killasgroup={{ item.value.killasgroup | bool | to_json }}
 {% endif %}
