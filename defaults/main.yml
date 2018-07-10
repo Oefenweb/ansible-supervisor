@@ -20,6 +20,7 @@ supervisor_supervisord_nodaemon: false
 supervisor_supervisord_logfile: /var/log/supervisor/supervisord.log
 supervisor_supervisord_pidfile: /var/run/supervisord.pid
 supervisor_supervisord_childlogdir: /var/log/supervisor
+supervisor_supervisord_environment: ""
 
 supervisor_supervisorctl_serverurl: "unix://{{ supervisor_unix_http_server_file }}"
 

@@ -27,6 +27,7 @@ nodaemon={{ supervisor_supervisord_nodaemon | default(false) | bool | to_json }}
 logfile={{ supervisor_supervisord_logfile }} ; (main log file;default $CWD/supervisord.log)
 pidfile={{ supervisor_supervisord_pidfile }} ; (supervisord pidfile;default supervisord.pid)
 childlogdir={{ supervisor_supervisord_childlogdir }} ; ('AUTO' child log dir, default $TEMP)
+environment={{ supervisor_supervisord_environment }} ;
 
 ; the below section must remain in the config file for RPC
 ; (supervisorctl/web interface) to work, additional interfaces may be
