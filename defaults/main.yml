@@ -1,5 +1,10 @@
 # defaults file for supervisor
 ---
+
+supervisor_dependencies:
+  - python
+supervisor_pip_executable: pip2
+
 supervisor_version: latest
 supervisor_unix_http_server_file: /var/run/supervisor.sock
 supervisor_unix_http_server_chmod: '0700'
