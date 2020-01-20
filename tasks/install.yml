@@ -13,7 +13,7 @@
   pip:
     name: supervisor
     version: "{{ supervisor_version }}"
-    executable: pip2
+    executable: "{{ supervisor_pip_executable }}"
   when: "supervisor_version != 'latest'"
   tags:
     - supervisor-install-specific
@@ -22,7 +22,7 @@
   pip:
     name: supervisor
     state: "{{ supervisor_version }}"
-    executable: pip2
+    executable: "{{ supervisor_pip_executable }}"
   when: "supervisor_version == 'latest'"
   tags:
     - supervisor-install-latest
