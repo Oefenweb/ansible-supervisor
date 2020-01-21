@@ -1,6 +1,7 @@
 ## supervisor
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-supervisor.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-supervisor) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-supervisor-blue.svg)](https://galaxy.ansible.com/Oefenweb/supervisor)
+[![Build Status](https://travis-ci.org/Oefenweb/ansible-supervisor.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-supervisor)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-supervisor-blue.svg)](https://galaxy.ansible.com/Oefenweb/supervisor)
 
 Set up the latest or a specific version of supervisor in Debian-like systems.
 
@@ -30,6 +31,7 @@ Set up the latest or a specific version of supervisor in Debian-like systems.
 * `supervisor_supervisord_logfile` [default: `/var/log/supervisor/supervisord.log`]: The path to the activity log of the supervisord process
 * `supervisor_supervisord_pidfile` [default: `/var/run/supervisord.pid`]: The location in which supervisord keeps its pid file
 * `supervisor_supervisord_childlogdir` [default: `/var/log/supervisor`]: The directory used for `AUTO` child log files
+* `supervisor_supervisord_environment` [default: `''`]: A list of key/value pairs comma separated that will be placed in the environment (e.g. `'KEY1="VALUE1",KEY2="VALUE2"'`)
 
 * `supervisor_supervisorctl_serverurl` [default: `"unix://{{ supervisor_unix_http_server_file }}"`]: The URL that should be used to access the supervisord server, e.g. `http://localhost:9001`. For UNIX domain sockets, use `unix:///absolute/path/to/file.sock`
 
