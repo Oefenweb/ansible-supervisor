@@ -1,6 +1,7 @@
 # meta file for supervisor
 ---
 galaxy_info:
+  role_name: supervisor
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.
   description: Set up the latest or a specific version of supervisor in Ubuntu systems
