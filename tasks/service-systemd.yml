@@ -2,8 +2,8 @@
 ---
 - name: configure | systemd | update script
   template:
-    src: etc/systemd/system/supervisor.j2
-    dest: /etc/systemd/system/supervisor.service
+    src: "{{ supervisor_etc_systemd_file.lstrip('/') }}.j2"
+    dest: "{{ supervisor_etc_systemd_file }}"
     owner: "{{ supervisor_system_user }}"
     group: "{{ supervisor_system_group }}"
     mode: 0644
@@ -13,7 +13,8 @@
     - supervisor-service-systemd-update
 
 - name: service | systemd | reload
-  command: systemctl daemon-reload
+  systemd:
+    daemon_reload: true
   when: _update_systemd_script is changed
   tags:
     - supervisor-service-systemd-reload

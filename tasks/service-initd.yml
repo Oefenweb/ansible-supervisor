@@ -2,8 +2,8 @@
 ---
 - name: configure | initd | update script
   template:
-    src: etc/init.d/supervisor.j2
-    dest: /etc/init.d/supervisor
+    src: "{{ supervisor_etc_init_d_file.lstrip('/') }}.j2"
+    dest: "{{ supervisor_etc_init_d_file }}"
     owner: "{{ supervisor_system_user }}"
     group: "{{ supervisor_system_group }}"
     mode: 0755

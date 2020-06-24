@@ -7,10 +7,12 @@ Set up the latest or a specific version of supervisor in Debian-like systems.
 
 #### Requirements
 
-* `pip` (will not installed)
 * `python` (will be installed)
+* `pip` (will not installed)
 
 #### Variables
+
+* `supervisor_python_version` [default: `2`]: Python version to use (install)
 
 * `supervisor_version` [default: `latest`]: Supervisor version to install (e.g. `latest`, `3.3.1`)
 * `supervisor_unix_http_server_file` [default: `/var/run/supervisor.sock`]: A path to a UNIX domain socket (e.g. `/tmp/supervisord.sock`) on which supervisor will listen for HTTP/XML-RPC requests. `supervisorctl` uses XML-RPC to communicate with supervisord over this port

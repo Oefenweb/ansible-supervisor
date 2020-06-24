@@ -2,14 +2,16 @@
 ---
 - name: pre | install dependencies
   apt:
-    name: "{{ item }}"
+    name:
+      - "python{{ supervisor_python_version is version('3', '>=') | ternary('3', '') }}"
+      - curl
     state: "{{ apt_install_state | default('latest') }}"
     update_cache: true
     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
-  with_items:
-    - python
-    - curl
 
 - name: pre | install pip
-  shell: curl -sL https://bootstrap.pypa.io/get-pip.py | python -
+  shell: >
+    curl -sL https://bootstrap.pypa.io/get-pip.py | python{{ supervisor_python_version | string }} -
+  args:
+      warn: false
   changed_when: false

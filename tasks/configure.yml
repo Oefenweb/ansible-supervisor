@@ -24,7 +24,7 @@
     group: "{{ supervisor_system_group }}"
     mode: 0755
   with_items: "{{ stat_directories.results }}"
-  when: item.stat.exists == false
+  when: not item.stat.exists
   tags:
     - supervisor-configure-directories
     - supervisor-configure-directories-create
