@@ -1,4 +1,4 @@
-# tasks file for supervisor
+# tasks file
 ---
 - name: groups | update group configuration files (present)
   template:

@@ -1,6 +1,6 @@
 ## supervisor
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-supervisor.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-supervisor)
+[![CI](https://github.com/Oefenweb/ansible-app-dev-db-server/workflows/CI/badge.svg)](https://github.com/Oefenweb/ansible-app-dev-db-server/actions?query=workflow%3ACI)
 [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-supervisor-blue.svg)](https://galaxy.ansible.com/Oefenweb/supervisor)
 
 Set up the latest or a specific version of supervisor in Debian-like systems.
@@ -12,7 +12,8 @@ Set up the latest or a specific version of supervisor in Debian-like systems.
 
 #### Variables
 
-* `supervisor_python_version` [default: `2`]: Python version to use (install)
+* `supervisor_python_version_major` [default: `2`]: Python version to install `supervisor` for.
+* `supervisor_python_version` [default: `supervisor_python_version`]: Deprecated
 
 * `supervisor_version` [default: `latest`]: Supervisor version to install (e.g. `latest`, `3.3.1`)
 * `supervisor_unix_http_server_file` [default: `/var/run/supervisor.sock`]: A path to a UNIX domain socket (e.g. `/tmp/supervisord.sock`) on which supervisor will listen for HTTP/XML-RPC requests. `supervisorctl` uses XML-RPC to communicate with supervisord over this port

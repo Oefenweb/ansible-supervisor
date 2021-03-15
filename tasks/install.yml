@@ -1,4 +1,4 @@
-# tasks file for supervisor
+# tasks file
 ---
 - name: install | dependencies
   apt:
@@ -13,7 +13,7 @@
   pip:
     name: supervisor
     version: "{{ supervisor_version }}"
-    executable: "pip{{ supervisor_python_version | string }}"
+    executable: "{{ supervisor_pip_executable | string }}"
   when: "supervisor_version != 'latest'"
   tags:
     - supervisor-install-specific
@@ -22,7 +22,7 @@
   pip:
     name: supervisor
     state: "{{ supervisor_version }}"
-    executable: "pip{{ supervisor_python_version | string }}"
+    executable: "{{ supervisor_pip_executable | string }}"
   when: "supervisor_version == 'latest'"
   tags:
     - supervisor-install-latest

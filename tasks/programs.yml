@@ -1,4 +1,4 @@
-# tasks file for supervisor
+# tasks file
 ---
 - name: programs | update program configuration files (present)
   template:

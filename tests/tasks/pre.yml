@@ -1,0 +1,19 @@
+# pre test file
+---
+- name: install dependencies
+  apt:
+    name:
+      - "python{{ supervisor_python_version_major is version('3', '>=') | ternary('3', '') }}"
+      - curl
+    state: "{{ apt_install_state | default('latest') }}"
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+
+- name: install pip
+  shell: >
+    curl -sL {{ supervisor_get_pip_url }} | python{{ supervisor_python_version_major | string }} -
+  args:
+    warn: false
+  changed_when: false
+  tags:
+    - skip_ansible_lint
