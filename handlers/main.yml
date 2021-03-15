@@ -1,4 +1,4 @@
-# handlers file for supervisor
+# handlers file
 ---
 - name: restart supervisor
   service:

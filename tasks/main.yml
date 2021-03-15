@@ -1,4 +1,4 @@
-# tasks file for supervisor
+# tasks file
 ---
 - include: install.yml
   tags:

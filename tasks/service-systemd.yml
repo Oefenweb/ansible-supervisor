@@ -1,4 +1,4 @@
-# tasks file for supervisor
+# tasks file
 ---
 - name: configure | systemd | update script
   template:

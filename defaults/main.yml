@@ -1,8 +1,10 @@
-# defaults file for supervisor
+# defaults file
 ---
-supervisor_python_version: 2
+supervisor_python_version_major: 2
+supervisor_python_version: "{{ supervisor_python_version_major }}"
+
 supervisor_dependencies:
-  - "python{{ supervisor_python_version is version('3', '>=') | ternary('3', '') }}"
+  - "python{{ supervisor_python_version_major is version('3', '>=') | ternary('3', '') }}"
 
 supervisor_version: latest
 supervisor_unix_http_server_file: /var/run/supervisor.sock
