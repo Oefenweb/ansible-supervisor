@@ -1,7 +1,24 @@
 # handlers file
 ---
-- name: restart supervisor
+
+# https://github.com/Oefenweb/ansible-supervisor/issues/47
+- name: stop supervisor
   service:
     name: supervisor
-    state: restarted
-  when: service_default_state | default('started') == 'started'
+    state: stopped
+  listen: "restart supervisor"
+
+- name: waiting for supervisor to be stopped
+  wait_for:
+    path: /var/run/supervisord.pid
+    state: absent
+    sleep: 5
+  listen: "restart supervisor"
+
+- shell: ps faux | grep supervisor
+
+- name: start supervisor
+  service:
+    name: supervisor
+    state: started
+  listen: "restart supervisor"
