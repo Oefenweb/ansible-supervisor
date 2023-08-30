@@ -1,18 +1,21 @@
 # tasks file
 ---
-- include: install.yml
+- name: install
+  ansible.builtin.import_tasks: install.yml
   tags:
     - configuration
     - supervisor
     - supervisor-install
 
-- include: configure.yml
+- name: configure
+  ansible.builtin.import_tasks: configure.yml
   tags:
     - configuration
     - supervisor
     - supervisor-configure
 
-- include: service-initd.yml
+- name: service initd
+  ansible.builtin.import_tasks: service-initd.yml
   when: ansible_service_mgr != 'systemd'
   tags:
     - configuration
@@ -20,7 +23,8 @@
     - supervisor-configure
     - supervisor-configure-initd
 
-- include: service-systemd.yml
+- name: service systemd
+  ansible.builtin.import_tasks: service-systemd.yml
   when: ansible_service_mgr == 'systemd'
   tags:
     - configuration
@@ -28,20 +32,22 @@
     - supervisor-configure
     - supervisor-configure-systemd
 
-- include: programs.yml
+- name: programs
+  ansible.builtin.import_tasks: programs.yml
   tags:
     - configuration
     - supervisor
     - supervisor-programs
 
-- include: groups.yml
+- name: groups
+  ansible.builtin.import_tasks: groups.yml
   tags:
     - configuration
     - supervisor
     - supervisor-groups
 
 - name: start and enable service
-  service:
+  ansible.builtin.service:
     name: supervisor
     state: "{{ service_default_state | default('started') }}"
     enabled: "{{ service_default_enabled | default(true) | bool }}"

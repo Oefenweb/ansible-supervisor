@@ -1,7 +1,7 @@
 # tasks file
 ---
 - name: configure | initd | update script
-  template:
+  ansible.builtin.template:
     src: "{{ supervisor_etc_init_d_file.lstrip('/') }}.j2"
     dest: "{{ supervisor_etc_init_d_file }}"
     owner: "{{ supervisor_system_user }}"
