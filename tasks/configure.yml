@@ -1,7 +1,7 @@
 # tasks file
 ---
 - name: configure | stat directories
-  stat:
+  ansible.builtin.stat:
     path: "{{ item }}/"
   register: stat_directories
   with_items:
@@ -17,7 +17,7 @@
     - supervisor-configure-directories-stat
 
 - name: configure | create directories
-  file:
+  ansible.builtin.file:
     path: "{{ item.item }}"
     state: directory
     owner: "{{ supervisor_system_user }}"
@@ -30,7 +30,7 @@
     - supervisor-configure-directories-create
 
 - name: configure | update configuration file - /etc/default/supervisor
-  template:
+  ansible.builtin.template:
     src: "{{ supervisor_default_file.lstrip('/') }}.j2"
     dest: "{{ supervisor_default_file }}"
     owner: "{{ supervisor_system_user }}"
@@ -42,7 +42,7 @@
     - supervisor-configure-configuration-default-supervisor
 
 - name: configure | update configuration file - /etc/supervisor/supervisord.conf
-  template:
+  ansible.builtin.template:
     src: "{{ supervisor_configuration_file.lstrip('/') }}.j2"
     dest: "{{ supervisor_configuration_file }}"
     owner: "{{ supervisor_system_user }}"

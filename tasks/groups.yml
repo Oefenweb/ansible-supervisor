@@ -1,7 +1,7 @@
 # tasks file
 ---
 - name: groups | update group configuration files (present)
-  template:
+  ansible.builtin.template:
     src: etc/supervisor/conf.d/group.conf.j2
     dest: "/etc/supervisor/conf.d/{{ item.key }}.conf"
     owner: "{{ supervisor_system_user }}"
@@ -13,7 +13,7 @@
     - supervisor-groups-present
 
 - name: groups | update group configuration files (absent)
-  file:
+  ansible.builtin.file:
     path: "/etc/supervisor/conf.d/{{ item.key }}.conf"
     state: absent
   with_dict: "{{ supervisor_groups_absent }}"

@@ -4,12 +4,12 @@
   become: true
   tasks:
     - name: include vars
-      include_vars: "{{ item }}"
+      ansible.builtin.include_vars: "{{ item }}"
       with_first_found:
         - "{{ playbook_dir }}/../../tests/vars/_{{ ansible_distribution_release }}.yml"
         - "{{ playbook_dir }}/../../tests/vars/_{{ ansible_distribution | lower }}.yml"
         - "{{ playbook_dir }}/../../tests/vars/_default.yml"
     - name: include vars
-      include_vars: "{{ playbook_dir }}/../../vars/main.yml"
+      ansible.builtin.include_vars: "{{ playbook_dir }}/../../vars/main.yml"
     - name: include tasks
-      include: "{{ playbook_dir }}/../../tests/tasks/pre.yml"
+      ansible.builtin.import_tasks: "{{ playbook_dir }}/../../tests/tasks/pre.yml"
