@@ -82,7 +82,7 @@ None
 ---
 - hosts: all
   roles:
-    - supervisor
+    - oefenweb.supervisor
 ```
 
 ##### Adding two programs in one group
