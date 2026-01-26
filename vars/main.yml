@@ -7,4 +7,5 @@ supervisor_default_file: /etc/default/supervisor
 supervisor_etc_init_d_file: /etc/init.d/supervisor
 supervisor_etc_systemd_file: /etc/systemd/system/supervisor.service
 
+supervisor_python_executable: "python{{ supervisor_pip_python_version_major | string }}"
 supervisor_pip_executable: "pip{{ supervisor_pip_python_version_major | string }}"

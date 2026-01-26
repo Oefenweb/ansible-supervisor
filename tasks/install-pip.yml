@@ -7,7 +7,7 @@
     update_cache: true
     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
   tags:
-    - supervisor-install-dependencies
+    - supervisor-install-pip-dependencies
 
 - name: install | pip | supervisor (specific version)
   ansible.builtin.pip:
@@ -17,7 +17,7 @@
     executable: "{{ supervisor_pip_executable | string }}"
   when: "supervisor_pip_package_version != 'latest'"
   tags:
-    - supervisor-install-specific
+    - supervisor-install-pip-specific
 
 - name: install | pip | supervisor (latest version)
   ansible.builtin.pip:
@@ -26,4 +26,4 @@
     executable: "{{ supervisor_pip_executable | string }}"
   when: "supervisor_pip_package_version == 'latest'"
   tags:
-    - supervisor-install-latest
+    - supervisor-install-pip-latest
