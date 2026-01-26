@@ -1,8 +1,10 @@
 # vars file
 ---
+supervisor_package_name: supervisor
+
 supervisor_install_prefix: /usr/local/bin
 supervisor_default_file: /etc/default/supervisor
 supervisor_etc_init_d_file: /etc/init.d/supervisor
 supervisor_etc_systemd_file: /etc/systemd/system/supervisor.service
 
-supervisor_pip_executable: "pip{{ supervisor_python_version_major | string }}"
+supervisor_pip_executable: "pip{{ supervisor_pip_python_version_major | string }}"

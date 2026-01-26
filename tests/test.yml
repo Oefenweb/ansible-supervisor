@@ -1,6 +1,7 @@
 # test file
 ---
-- hosts: localhost
+- name: converge
+  hosts: localhost
   connection: local
   become: true
   pre_tasks:
@@ -12,5 +13,6 @@
         - "{{ playbook_dir }}/vars/_default.yml"
     - name: include tasks
       ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/pre.yml"
+      when: supervisor_install_method == 'pip'
   roles:
     - ../../

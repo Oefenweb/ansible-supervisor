@@ -8,7 +8,7 @@ Set up the latest or a specific version of supervisor in Debian-like systems.
 #### Requirements
 
 * `python` (will be installed)
-* `pip` (will not installed)
+* `pip` (will not be installed)
 
 #### Variables
 
@@ -25,7 +25,7 @@ Set up the latest or a specific version of supervisor in Debian-like systems.
 * `supervisor_system_user` [default: `root`]: Name of the user that should own the config file/directory
 * `supervisor_system_group` [default: `root`]: Name of the group that should own the config file/directory
 
-* `supervisor_inet_http_server_enabled` [default: `false`]: Whether or not to enable the HTTP server
+* `supervisor_inet_http_server_enabled` [default: `false`]: Whether to enable the HTTP server
 * `supervisor_inet_http_server_port` [default: `9001`]: A TCP host:port value or (e.g. `127.0.0.1:9001`) on which supervisor will listen for HTTP/XML-RPC requests. `supervisorctl` will use XML-RPC to communicate with supervisord over this port
 * `supervisor_inet_http_server_username` [default: `admin`]: The username required for authentication to this HTTP server **Make sure to change!**
 * `supervisor_inet_http_server_password` [default: `'4ubA&Et=ASPe'`]: The password required for authentication to this HTTP server. This can be a cleartext password, or can be specified as a SHA-1 hash if prefixed by the string `{SHA}` **Make sure to change!**
