@@ -1,12 +1,10 @@
 # defaults file
 ---
-supervisor_python_version_major: 2
-supervisor_python_version: "{{ supervisor_python_version_major }}"
+supervisor_install_method: native
 
-supervisor_dependencies:
-  - "python{{ supervisor_python_version_major is version('3', '>=') | ternary('3', '') }}"
+supervisor_pip_python_version_major: 3
+supervisor_pip_package_version: latest
 
-supervisor_version: latest
 supervisor_unix_http_server_file: /var/run/supervisor.sock
 supervisor_unix_http_server_chmod: '0700'
 

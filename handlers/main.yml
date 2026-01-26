@@ -2,6 +2,6 @@
 ---
 - name: restart supervisor
   ansible.builtin.service:
-    name: supervisor
+    name: "{{ supervisor_package_name }}"
     state: restarted
   when: service_default_state | default('started') == 'started'

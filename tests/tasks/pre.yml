@@ -3,7 +3,7 @@
 - name: install dependencies
   ansible.builtin.apt:
     name:
-      - "python{{ supervisor_python_version_major is version('3', '>=') | ternary('3', '') }}"
+      - "python{{ supervisor_pip_python_version_major is version('3', '>=') | ternary('3', '') }}"
       - curl
     state: "{{ apt_install_state | default('latest') }}"
     update_cache: true
@@ -11,7 +11,7 @@
 
 - name: install pip  # noqa command-instead-of-module
   ansible.builtin.shell: >
-    curl -sL {{ supervisor_get_pip_url }} | python{{ supervisor_python_version_major | string }} -
+    curl -sL {{ supervisor_get_pip_url }} | {{ supervisor_python_executable }} -
   changed_when: false
   tags:
     - skip_ansible_lint

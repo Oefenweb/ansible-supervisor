@@ -1,11 +1,20 @@
 # tasks file
 ---
-- name: install
-  ansible.builtin.import_tasks: install.yml
+- name: install native
+  ansible.builtin.import_tasks: install-native.yml
+  when: supervisor_install_method == 'native'
   tags:
     - configuration
     - supervisor
-    - supervisor-install
+    - supervisor-install-native
+
+- name: install pip
+  ansible.builtin.import_tasks: install-pip.yml
+  when: supervisor_install_method == 'pip'
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-install-pip
 
 - name: configure
   ansible.builtin.import_tasks: configure.yml
@@ -48,7 +57,7 @@
 
 - name: start and enable service
   ansible.builtin.service:
-    name: supervisor
+    name: "{{ supervisor_package_name }}"
     state: "{{ service_default_state | default('started') }}"
     enabled: "{{ service_default_enabled | default(true) | bool }}"
   tags:

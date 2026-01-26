@@ -1,0 +1,29 @@
+# tasks file
+---
+- name: install | pip | dependencies
+  ansible.builtin.apt:
+    name: "{{ supervisor_pip_dependencies }}"
+    state: "{{ apt_install_state | default('latest') }}"
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+  tags:
+    - supervisor-install-pip-dependencies
+
+- name: install | pip | supervisor (specific version)
+  ansible.builtin.pip:
+    name: "{{ supervisor_package_name }}"
+    state: present
+    version: "{{ supervisor_pip_package_version }}"
+    executable: "{{ supervisor_pip_executable | string }}"
+  when: "supervisor_pip_package_version != 'latest'"
+  tags:
+    - supervisor-install-pip-specific
+
+- name: install | pip | supervisor (latest version)
+  ansible.builtin.pip:
+    name: "{{ supervisor_package_name }}"
+    state: "{{ supervisor_pip_package_version }}"
+    executable: "{{ supervisor_pip_executable | string }}"
+  when: "supervisor_pip_package_version == 'latest'"
+  tags:
+    - supervisor-install-pip-latest

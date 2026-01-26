@@ -13,3 +13,4 @@
       ansible.builtin.include_vars: "{{ playbook_dir }}/../../vars/main.yml"
     - name: include tasks
       ansible.builtin.import_tasks: "{{ playbook_dir }}/../../tests/tasks/pre.yml"
+      when: supervisor_install_method == 'pip'

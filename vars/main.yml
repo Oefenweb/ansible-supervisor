@@ -1,8 +1,18 @@
 # vars file
 ---
-supervisor_install_prefix: /usr/local/bin
-supervisor_default_file: /etc/default/supervisor
-supervisor_etc_init_d_file: /etc/init.d/supervisor
-supervisor_etc_systemd_file: /etc/systemd/system/supervisor.service
+supervisor_package_name: supervisor
 
-supervisor_pip_executable: "pip{{ supervisor_python_version_major | string }}"
+supervisor_native_dependencies:
+  - "{{ supervisor_package_name }}"
+
+supervisor_pip_dependencies:
+  - "python{{ supervisor_pip_python_version_major is version('3', '>=') | ternary('3', '') }}"
+
+supervisor_install_prefix: "/usr/{{ (supervisor_install_method == 'native') | ternary('', 'local/') }}bin"
+
+supervisor_default_file: "/etc/default/{{ supervisor_package_name }}"
+supervisor_etc_init_d_file: "/etc/init.d/{{ supervisor_package_name }}"
+supervisor_etc_systemd_file: "/lib/systemd/system/{{ supervisor_package_name }}.service"
+
+supervisor_python_executable: "python{{ supervisor_pip_python_version_major | string }}"
+supervisor_pip_executable: "pip{{ supervisor_pip_python_version_major | string }}"

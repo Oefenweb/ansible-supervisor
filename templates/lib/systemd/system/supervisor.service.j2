@@ -1,4 +1,4 @@
-; {{ ansible_managed }}
+{{ ansible_managed | comment(decoration='; ') }}
 
 [Unit]
 Description=Start/stop supervisor daemon and its configured subprocesses
