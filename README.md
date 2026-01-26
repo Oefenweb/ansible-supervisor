@@ -10,12 +10,15 @@ Set up the latest or a specific version of supervisor in Debian-like systems.
 * `python` (will be installed)
 * `pip` (will not be installed)
 
+when using `supervisor_install_method: pip`
+
 #### Variables
 
-* `supervisor_python_version_major` [default: `2`]: Python version to install `supervisor` for.
-* `supervisor_python_version` [default: `supervisor_python_version`]: Deprecated
+* `supervisor_install_method`: [default: `native`]: The way to install supervisor (e.g. `native` (from Ubuntu repo) or `pip`)
 
-* `supervisor_version` [default: `latest`]: Supervisor version to install (e.g. `latest`, `3.3.1`)
+* `supervisor_pip_python_version_major` [default: `3`]: Python version to install `supervisor` for. Only relevant when using `supervisor_install_method: pip`
+* `supervisor_pip_package_version` [default: `latest`]: Supervisor version to install (e.g. `latest`, `3.3.1`). Only relevant when using `supervisor_install_method: pip`
+
 * `supervisor_unix_http_server_file` [default: `/var/run/supervisor.sock`]: A path to a UNIX domain socket (e.g. `/tmp/supervisord.sock`) on which supervisor will listen for HTTP/XML-RPC requests. `supervisorctl` uses XML-RPC to communicate with supervisord over this port
 * `supervisor_unix_http_server_chmod` [default: `'0700'`]: Change the UNIX permission mode bits of the UNIX domain socket to this value at startup
 * `supervisor_unix_http_server_chown` [optional]: The user and group of `supervisor_unix_http_server_file` file. Use the following format: `user:group`

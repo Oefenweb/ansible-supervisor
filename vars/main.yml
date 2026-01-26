@@ -2,6 +2,12 @@
 ---
 supervisor_package_name: supervisor
 
+supervisor_native_dependencies:
+  - "{{ supervisor_package_name }}"
+
+supervisor_pip_dependencies:
+  - "python{{ supervisor_pip_python_version_major is version('3', '>=') | ternary('3', '') }}"
+
 supervisor_install_prefix: "/usr/{{ (supervisor_install_method == 'native') | ternary('', 'local/') }}bin"
 
 supervisor_default_file: "/etc/default/{{ supervisor_package_name }}"

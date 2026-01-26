@@ -1,12 +1,8 @@
 # defaults file
 ---
 supervisor_install_method: native
-supervisor_native_dependencies:
-  - "{{ supervisor_package_name }}"
 
-supervisor_pip_python_version_major: 2
-supervisor_pip_dependencies:
-  - "python{{ supervisor_pip_python_version_major is version('3', '>=') | ternary('3', '') }}"
+supervisor_pip_python_version_major: 3
 supervisor_pip_package_version: latest
 
 supervisor_unix_http_server_file: /var/run/supervisor.sock
