@@ -2,7 +2,7 @@
 ---
 - name: install | pip | dependencies
   ansible.builtin.apt:
-    name: "{{ supervisor_dependencies }}"
+    name: "{{ supervisor_pip_dependencies }}"
     state: "{{ apt_install_state | default('latest') }}"
     update_cache: true
     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
