@@ -1,0 +1,5 @@
+# vars file
+---
+supervisor_install_method: pip
+supervisor_pip_python_version_major: 3
+supervisor_get_pip_url: 'https://bootstrap.pypa.io/pip/3.9/get-pip.py'

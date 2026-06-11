@@ -22,7 +22,7 @@
     state: directory
     owner: "{{ supervisor_system_user }}"
     group: "{{ supervisor_system_group }}"
-    mode: 0755
+    mode: '0755'
   with_items: "{{ stat_directories.results }}"
   when: not item.stat.exists
   tags:
@@ -35,7 +35,7 @@
     dest: "{{ supervisor_default_file }}"
     owner: "{{ supervisor_system_user }}"
     group: "{{ supervisor_system_group }}"
-    mode: 0644
+    mode: '0644'
   notify: restart supervisor
   tags:
     - supervisor-configure-configuration
@@ -47,7 +47,7 @@
     dest: "{{ supervisor_configuration_file }}"
     owner: "{{ supervisor_system_user }}"
     group: "{{ supervisor_system_group }}"
-    mode: 0640
+    mode: '0640'
   notify: restart supervisor
   tags:
     - supervisor-configure-configuration
