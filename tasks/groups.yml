@@ -6,7 +6,7 @@
     dest: "/etc/supervisor/conf.d/{{ item.key }}.conf"
     owner: "{{ supervisor_system_user }}"
     group: "{{ supervisor_system_group }}"
-    mode: 0640
+    mode: '0640'
   with_dict: "{{ supervisor_groups_present }}"
   notify: restart supervisor
   tags:
