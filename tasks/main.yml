@@ -25,7 +25,7 @@
 
 - name: service initd
   ansible.builtin.import_tasks: service-initd.yml
-  when: ansible_service_mgr != 'systemd'
+  when: ansible_facts['service_mgr'] != 'systemd'
   tags:
     - configuration
     - supervisor
@@ -34,7 +34,7 @@
 
 - name: service systemd
   ansible.builtin.import_tasks: service-systemd.yml
-  when: ansible_service_mgr == 'systemd'
+  when: ansible_facts['service_mgr'] == 'systemd'
   tags:
     - configuration
     - supervisor
